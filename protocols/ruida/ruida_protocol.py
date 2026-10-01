@@ -236,67 +236,76 @@ MST = {
 
 MT = {
     0x00: {
-        0x04: ("MEM_IO_ENABLE", TBDU35),
-        0x05: ("MEM_G0_VELOCITY", TBDU35),
-        0x0B: ("MEM_ENG_FACULA", TBDU35),
-        0x0C: ("MEM_HOME_VELOCITY", TBDU35),
-        0x0E: ("MEM_ENG_VERT_VELOCITY", TBDU35),
-        0x10: ("MEM_SYSTEM_CONTROL_MODE", TBDU35),
-        0x11: ("MEM_LASER_PWM_FREQUENCY_1", TBDU35),
-        0x12: ("MEM_LASER_MIN_POWER_1", TBDU35),
-        0x13: ("MEM_LASER_MAX_POWER_1", TBDU35),
+        # Bits: 0x0001 door protect, 0x0002 air assist output,
+        # 0x0020/0x0040 water protect laser 1/2,
+        # 0x0200/0x0400 laser 1/2 output signal high.
+        0x04: ("MEM_IO_ENABLE", TBDU35),  # Verified RDC8445S
+        0x05: ("MEM_G0_VELOCITY", TBDU35),  # Verified RDC8445S
+        0x0B: ("MEM_ENG_FACULA", TBDU35),  # Verified RDC8445S
+        0x0C: ("MEM_HOME_VELOCITY", TBDU35),  # Verified RDC8445S
+        0x0E: ("MEM_ENG_VERT_VELOCITY", TBDU35),  # Verified RDC8445S
+        # Bits: 0x0003 tube type, 0x0400 engraving mode,
+        # 0x2000/0x4000 laser 1/2 enabled, 0x8000 multi-tube.
+        0x10: ("MEM_SYSTEM_CONTROL_MODE", TBDU35),  # Verified RDC8445S
+        0x11: ("MEM_LASER_PWM_FREQUENCY_1", TBDU35),  # Verified RDC8445S
+        0x12: ("MEM_LASER_MIN_POWER_1", TBDU35),  # Verified RDC8445S
+        0x13: ("MEM_LASER_MAX_POWER_1", TBDU35),  # Verified RDC8445S
         0x16: ("MEM_LASER_ATTENUATION", TBDU35),
-        0x17: ("MEM_LASER_PWM_FREQUENCY_2", TBDU35),
-        0x18: ("MEM_LASER_MIN_POWER_2", TBDU35),
-        0x19: ("MEM_LASER_MAX_POWER_2", TBDU35),
-        0x1A: ("MEM_LASER_STANDBY_FREQUENCY_1", TBDU35),
-        0x1B: ("MEM_LASER_STANDBY_PULSE_1", TBDU35),
-        0x1C: ("MEM_LASER_STANDBY_FREQUENCY_2", TBDU35),
-        0x1D: ("MEM_LASER_STANDBY_PULSE_2", TBDU35),
+        0x17: ("MEM_LASER_PWM_FREQUENCY_2", TBDU35),  # Verified RDC8445S
+        0x18: ("MEM_LASER_MIN_POWER_2", TBDU35),  # Verified RDC8445S
+        0x19: ("MEM_LASER_MAX_POWER_2", TBDU35),  # Verified RDC8445S
+        0x1A: ("MEM_LASER_STANDBY_FREQUENCY_1", TBDU35),  # Verified RDC8445S
+        0x1B: ("MEM_LASER_STANDBY_PULSE_1", TBDU35),  # Verified RDC8445S
+        0x1C: ("MEM_LASER_STANDBY_FREQUENCY_2", TBDU35),  # Verified RDC8445S
+        0x1D: ("MEM_LASER_STANDBY_PULSE_2", TBDU35),  # Verified RDC8445S
         0x1E: ("MEM_AUTO_TYPE_SPACE", TBD35),
-        0x20: ("MEM_AXIS_CONTROL_PARA_1", TBDU35),
-        0x21: ("MEM_AXIS_PRECISION_1", TBDU35),
-        0x23: ("MEM_AXIS_MAX_VELOCITY_1", TBDU35),
-        0x24: ("MEM_AXIS_START_VELOCITY_1", TBDU35),
-        0x25: ("MEM_AXIS_MAX_ACC_1", TBDU35),
-        0x26: ("MEM_BED_SIZE_X", XFARDIM),
-        0x27: ("MEM_AXIS_BTN_START_VEL_1", TBDU35),
-        0x28: ("MEM_AXIS_BTN_ACC_1", TBDU35),
-        0x29: ("MEM_AXIS_ESTP_ACC_1", TBDU35),
-        0x2A: ("MEM_AXIS_HOME_OFFSET_1", TBDU35),
-        0x2B: ("MEM_AXIS_BACKLASH_1", TBDU35),
-        0x30: ("MEM_AXIS_CONTROL_PARA_2", TBDU35),
-        0x31: ("MEM_AXIS_PRECISION_2", TBDU35),
-        0x33: ("MEM_AXIS_MAX_VELOCITY_2", TBDU35),
-        0x34: ("MEM_AXIS_START_VELOCITY_2", TBDU35),
-        0x35: ("MEM_AXIS_MAX_ACC_2", TBDU35),
-        0x36: ("MEM_BED_SIZE_Y", YFARDIM),
-        0x37: ("MEM_AXIS_BTN_START_VEL_2", TBDU35),
-        0x38: ("MEM_AXIS_BTN_ACC_2", TBDU35),
-        0x39: ("MEM_AXIS_ESTP_ACC_2", TBDU35),
-        0x3A: ("MEM_AXIS_HOME_OFFSET_2", TBDU35),
-        0x3B: ("MEM_AXIS_BACKLASH_2", TBDU35),
-        0x40: ("MEM_AXIS_CONTROL_PARA_3", TBDU35),
-        0x41: ("MEM_AXIS_PRECISION_3", TBDU35),
-        0x43: ("MEM_AXIS_MAX_VELOCITY_3", TBDU35),
-        0x44: ("MEM_AXIS_START_VELOCITY_3", TBDU35),
-        0x45: ("MEM_AXIS_MAX_ACC_3", TBDU35),
-        0x46: ("MEM_AXIS_RANGE_3", TBDU35),
-        0x47: ("MEM_AXIS_BTN_START_VEL_3", TBDU35),
-        0x48: ("MEM_AXIS_BTN_ACC_3", TBDU35),
-        0x49: ("MEM_AXIS_ESTP_ACC_3", TBDU35),
-        0x4A: ("MEM_AXIS_HOME_OFFSET_3", TBDU35),
+        # Axis control bits (same layout for axes 1-4): 0x0200
+        # direction polarity, 0x0400 limiter polarity, 0x0800 PWM
+        # rising edge, 0x1000 invert keypad direction, 0x4000
+        # limit trigger, 0x8000 enable homing.
+        0x20: ("MEM_AXIS_CONTROL_PARA_1", TBDU35),  # Verified RDC8445S
+        0x21: ("MEM_AXIS_PRECISION_1", TBDU35),  # Verified RDC8445S
+        0x23: ("MEM_AXIS_MAX_VELOCITY_1", TBDU35),  # Verified RDC8445S
+        0x24: ("MEM_AXIS_START_VELOCITY_1", TBDU35),  # Verified RDC8445S
+        0x25: ("MEM_AXIS_MAX_ACC_1", TBDU35),  # Verified RDC8445S
+        0x26: ("MEM_BED_SIZE_X", XFARDIM),  # Verified RDC8445S
+        0x27: ("MEM_AXIS_BTN_START_VEL_1", TBDU35),  # Verified RDC8445S
+        0x28: ("MEM_AXIS_BTN_ACC_1", TBDU35),  # Verified RDC8445S
+        0x29: ("MEM_AXIS_ESTP_ACC_1", TBDU35),  # Verified RDC8445S
+        0x2A: ("MEM_AXIS_HOME_OFFSET_1", TBDU35),  # Verified RDC8445S
+        0x2B: ("MEM_AXIS_BACKLASH_1", TBDU35),  # Verified RDC8445S
+        0x30: ("MEM_AXIS_CONTROL_PARA_2", TBDU35),  # Verified RDC8445S
+        0x31: ("MEM_AXIS_PRECISION_2", TBDU35),  # Verified RDC8445S
+        0x33: ("MEM_AXIS_MAX_VELOCITY_2", TBDU35),  # Verified RDC8445S
+        0x34: ("MEM_AXIS_START_VELOCITY_2", TBDU35),  # Verified RDC8445S
+        0x35: ("MEM_AXIS_MAX_ACC_2", TBDU35),  # Verified RDC8445S
+        0x36: ("MEM_BED_SIZE_Y", YFARDIM),  # Verified RDC8445S
+        0x37: ("MEM_AXIS_BTN_START_VEL_2", TBDU35),  # Verified RDC8445S
+        0x38: ("MEM_AXIS_BTN_ACC_2", TBDU35),  # Verified RDC8445S
+        0x39: ("MEM_AXIS_ESTP_ACC_2", TBDU35),  # Verified RDC8445S
+        0x3A: ("MEM_AXIS_HOME_OFFSET_2", TBDU35),  # Verified RDC8445S
+        0x3B: ("MEM_AXIS_BACKLASH_2", TBDU35),  # Verified RDC8445S
+        0x40: ("MEM_AXIS_CONTROL_PARA_3", TBDU35),  # Verified RDC8445S
+        0x41: ("MEM_AXIS_PRECISION_3", TBDU35),  # Verified RDC8445S
+        0x43: ("MEM_AXIS_MAX_VELOCITY_3", TBDU35),  # Verified RDC8445S
+        0x44: ("MEM_AXIS_START_VELOCITY_3", TBDU35),  # Verified RDC8445S
+        0x45: ("MEM_AXIS_MAX_ACC_3", TBDU35),  # Verified RDC8445S
+        0x46: ("MEM_AXIS_RANGE_3", TBDU35),  # Verified RDC8445S
+        0x47: ("MEM_AXIS_BTN_START_VEL_3", TBDU35),  # Verified RDC8445S
+        0x48: ("MEM_AXIS_BTN_ACC_3", TBDU35),  # Verified RDC8445S
+        0x49: ("MEM_AXIS_ESTP_ACC_3", TBDU35),  # Verified RDC8445S
+        0x4A: ("MEM_AXIS_HOME_OFFSET_3", TBDU35),  # Verified RDC8445S
         0x4B: ("MEM_AXIS_BACKLASH_3", TBDU35),
-        0x50: ("MEM_AXIS_CONTROL_PARA_4", TBDU35),
-        0x51: ("MEM_AXIS_PRECISION_4", TBDU35),
-        0x53: ("MEM_AXIS_MAX_VELOCITY_4", TBDU35),
-        0x54: ("MEM_AXIS_START_VELOCITY_4", TBDU35),
-        0x55: ("MEM_AXIS_MAX_ACC_4", TBDU35),
-        0x56: ("MEM_AXIS_RANGE_4", TBDU35),
-        0x57: ("MEM_AXIS_BTN_START_VEL_4", TBDU35),
-        0x58: ("MEM_AXIS_BTN_ACC_4", TBDU35),
-        0x59: ("MEM_AXIS_ESTP_ACC_4", TBDU35),
-        0x5A: ("MEM_AXIS_HOME_OFFSET_4", TBDU35),
+        0x50: ("MEM_AXIS_CONTROL_PARA_4", TBDU35),  # Verified RDC8445S
+        0x51: ("MEM_AXIS_PRECISION_4", TBDU35),  # Verified RDC8445S
+        0x53: ("MEM_AXIS_MAX_VELOCITY_4", TBDU35),  # Verified RDC8445S
+        0x54: ("MEM_AXIS_START_VELOCITY_4", TBDU35),  # Verified RDC8445S
+        0x55: ("MEM_AXIS_MAX_ACC_4", TBDU35),  # Verified RDC8445S
+        0x56: ("MEM_AXIS_RANGE_4", TBDU35),  # Verified RDC8445S
+        0x57: ("MEM_AXIS_BTN_START_VEL_4", TBDU35),  # Verified RDC8445S
+        0x58: ("MEM_AXIS_BTN_ACC_4", TBDU35),  # Verified RDC8445S
+        0x59: ("MEM_AXIS_ESTP_ACC_4", TBDU35),  # Verified RDC8445S
+        0x5A: ("MEM_AXIS_HOME_OFFSET_4", TBDU35),  # Verified RDC8445S
         0x5B: ("MEM_AXIS_BACKLASH_4", TBDU35),
         0x60: ("MEM_MACHINE_TYPE_(0X1155,_0XAA55)", TBDU35),
         0x63: ("MEM_LASER_MIN_POWER_3", TBDU35),
@@ -314,35 +323,48 @@ MT = {
         0x00: ("MEM_SYSTEM_SETTINGS", TBDU35),
         0x01: ("MEM_TURN_VELOCITY", TBDU35),
         0x02: ("MEM_SYN_ACC", TBDU35),
-        0x03: ("MEM_G0_DELAY", TBDU35),
+        0x03: ("MEM_G0_DELAY", TBDU35),  # Verified RDC8445S
         0x07: ("MEM_FEED_DELAY_AFTER", TBDU35),
         0x09: ("MEM_TURN_ACC", TBDU35),
-        0x0A: ("MEM_G0_ACC", TBDU35),
+        0x0A: ("MEM_G0_ACC", TBDU35),  # Verified RDC8445S
         0x0B: ("MEM_FEED_DELAY_PRIOR", TBDU35),
         0x0C: ("MEM_MANUAL_DIS", TBDU35),
         0x0D: ("MEM_SHUT_DOWN_DELAY", TBDU35),
         0x0E: ("MEM_FOCUS_DEPTH", TBDU35),  # Verified RDC8445S
         0x0F: ("MEM_GO_SCALE_BLANK", TBDU35),
-        0x1A: ("MEM_ACC_RATIO", TBDU35),
+        0x15: ("MEM_X_DOCKING_POSITION", TBDU35),  # Verified RDC8445S
+        0x16: ("MEM_Y_DOCKING_POSITION", TBDU35),  # Verified RDC8445S
+        0x1A: ("MEM_ACC_RATIO", TBDU35),  # Verified RDC8445S
         0x17: ("MEM_ARRAY_FEED_REPAY", TBDU35),
         0x1B: ("MEM_TURN_RATIO", TBDU35),
-        0x1C: ("MEM_ACC_G0_RATIO", TBDU35),
-        0x1F: ("MEM_ROTATE_PULSE", TBDU35),
-        0x21: ("MEM_ROTATE_D", TBDU35),
-        0x24: ("MEM_X_MINIMUM_ENG_VELOCITY", TBDU35),
-        0x25: ("MEM_X_ENG_ACC", TBDU35),
-        0x26: ("MEM_USER_PARA_1", TBDU35),
+        0x1C: ("MEM_ACC_G0_RATIO", TBDU35),  # Verified RDC8445S
+        0x1F: ("MEM_ROTATE_PULSE", TBDU35),  # Verified RDC8445S
+        0x21: ("MEM_ROTATE_D", TBDU35),  # Verified RDC8445S
+        0x24: ("MEM_X_MINIMUM_ENG_VELOCITY", TBDU35),  # Verified RDC8445S
+        0x25: ("MEM_X_ENG_ACC", TBDU35),  # Verified RDC8445S
+        # Bits: 0x0001 rotary enabled, 0x0004 panel speed shift.
+        0x26: ("MEM_USER_PARA_1", TBDU35),  # Verified RDC8445S
+        # RDC8445S: 0x0228-0x022A read invalid values; that model keeps
+        # the Z/U velocities at 0x0240-0x0243 and the Z docking
+        # position at 0x022D.
         0x28: ("MEM_Z_HOME_VELOCITY", TBDU35),
         0x29: ("MEM_Z_WORK_VELOCITY", TBDU35),
         0x2A: ("MEM_Z_G0_VELOCITY", TBDU35),
         0x2B: ("MEM_Z_PEN_UP_POSITION", TBDU35),
         0x2C: ("MEM_U_HOME_VELOCITY", TBDU35),
         0x2D: ("MEM_U_WORK_VELOCITY", TBDU35),
-        0x31: ("MEM_MANUAL_FAST_SPEED", TBDU35),
-        0x32: ("MEM_MANUAL_SLOW_SPEED", TBDU35),
-        0x34: ("MEM_Y_MINIMUM_ENG_VELOCITY", TBDU35),
-        0x35: ("MEM_Y_ENG_ACC", TBDU35),
-        0x37: ("MEM_ENG_ACC_RATIO", TBDU35),
+        0x31: ("MEM_MANUAL_FAST_SPEED", TBDU35),  # Verified RDC8445S
+        0x32: ("MEM_MANUAL_SLOW_SPEED", TBDU35),  # Verified RDC8445S
+        0x33: ("MEM_RESET_DELAY", TBDU35),  # Verified RDC8445S
+        0x34: ("MEM_Y_MINIMUM_ENG_VELOCITY", TBDU35),  # Verified RDC8445S
+        0x35: ("MEM_Y_ENG_ACC", TBDU35),  # Verified RDC8445S
+        0x37: ("MEM_ENG_ACC_RATIO", TBDU35),  # Verified RDC8445S
+        0x38: ("MEM_STATUS_ON_DELAY", TBDU35),  # Verified RDC8445S
+        0x3D: ("MEM_AIR_PROTECT_CONFIG", TBDU35),  # Verified RDC8445S
+        0x40: ("MEM_Z_HOME_VELOCITY_ALT", TBDU35),  # Verified RDC8445S
+        0x41: ("MEM_Z_WORK_VELOCITY_ALT", TBDU35),  # Verified RDC8445S
+        0x42: ("MEM_U_HOME_VELOCITY_ALT", TBDU35),  # Verified RDC8445S
+        0x43: ("MEM_U_WORK_VELOCITY_ALT", TBDU35),  # Verified RDC8445S
     },
     0x03: {
         0x00: ("MEM_CARD_LANGUAGE", TBDU35),
@@ -357,6 +379,8 @@ MT = {
         # 0x0600 air assist mode.
         0x0F: ("MEM_FOCUS_CONFIG", TBDU35),  # Verified RDC8445S
         0x11: ("MEM_TOTAL_LASER_WORK_TIME", TBDU35),
+        0x51: ("MEM_STATUS_OFF_DELAY", TBDU35),  # Verified RDC8445S
+        0x52: ("MEM_FINISH_DELAY", TBDU35),  # Verified RDC8445S
     },
     0x04: {
         0x00: ("MEM_MACHINE_STATUS", M_STAT),
